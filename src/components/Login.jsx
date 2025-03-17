@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import styles from "../styles/login.module.css";
 import { useQuery } from "@tanstack/react-query";
 
-export const baseUrl = `https://backend-attendance-j4qz.onrender.com`;
+export const baseUrl = `https://attendance-backend-9ilt.onrender.com`;
 
 export const Login = () => {
 
@@ -16,50 +16,6 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [isLoading, setLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    // const {data, isLoading, error, refetch} = useQuery({queryKey: ["loginUser"], queryFn: async() => {
-
-    //     try {
-
-    //         const response = await axios.post(`${baseUrl}/auth/login`, {
-
-    //             username: username,
-    //             password: password
-    //         }, {
-
-    //             withCredentials: true,
-    //             headers: {
-
-    //                 "Content-Type": "application/x-www-form-urlencoded"
-    //             }
-    //         });
-
-    //         if(response.status === 200){
-
-    //             navigate("/home");
-
-    //             console.log(response.data);
-                
-    //         }
-        
-    //         return response.data;
-            
-    //     } catch (error) {
-
-    //         if(error.response.status === 401){
-
-    //             alert("No user found.");
-            
-    //         }else{
-
-    //             alert(error.status);
-    //         }
-            
-    //         console.log(error.message);
-
-    //         return {}
-    //     }
-    // }, enabled: false});
 
     const handleUsernameInput = (event) => {
 
@@ -101,8 +57,6 @@ export const Login = () => {
                 setIsLoggedIn(true);
 
                 navigate("/home");
-
-                console.log(response.data);
                 
             }
             
@@ -136,7 +90,7 @@ export const Login = () => {
                     withCredentials: true
                 });
 
-                if(checkIfAuthenticated.status === 200){
+                    if(checkIfAuthenticated.status === 200){
 
                     navigate("/home");
                 }

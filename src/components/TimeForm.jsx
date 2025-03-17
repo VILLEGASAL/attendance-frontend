@@ -6,6 +6,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { baseUrl } from "./Login.jsx";
+
 export const TimeForm = (props) => {
 
   const today = new Date();
@@ -63,7 +65,7 @@ export const TimeForm = (props) => {
           }
   
           const response = await axios.post(
-            "https://attendance-backend-gukn.onrender.com/attendance/add",
+            `${baseUrl}/attendance/add`,
             {
               date: date,
               time_in: timeIn,

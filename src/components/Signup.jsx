@@ -61,13 +61,9 @@ export const Signup = () => {
 
             if(error.response.status != 200){
 
-                console.log(error.response.data.message);
-                
-            }
-            
+                console.log(error.response.data.message);   
+            }   
         }
-        
-        
     }
 
     useEffect(() => {
@@ -76,13 +72,13 @@ export const Signup = () => {
 
             try {
 
-                const checkIfAuthenticated = await axios.get(`/auth/check-auth`, {
+                const response = await axios.get(`${baseUrl}/auth/check-auth`, {
 
-                    withCredentials: "include"
+                    withCredentials: true
                 });
                 
 
-                if(checkIfAuthenticated.status === 200){
+                if(response.status === 200){
 
                     navigate("/home");
                 }

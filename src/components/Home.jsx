@@ -55,25 +55,6 @@ export const Home = () => {
         await refetch();
     }
 
-    // const handleLogoutBtn = async(event) => {
-
-    //     try {
-
-    //         const logoutUser = await axios.delete("http://localhost:5000/auth/logout", {
-
-    //             withCredentials: true
-    //         });
-            
-    //     } catch (error) {
-
-    //         if(error.response.status != 200){
-
-    //             navigate("/login");
-    //         }
-            
-    //     }
-    // }
-
     //Check If authenticated
     useEffect(() => {
 
@@ -81,17 +62,18 @@ export const Home = () => {
 
             try {
 
-                let checkIfAuthenticated = await axios.get(`${baseUrl}/auth/check-auth`, {
+                let response = await axios.get(`${baseUrl}/auth/check-auth`, {
 
                     withCredentials: true
                 });
 
-                console.log(checkIfAuthenticated);
                 
                 
-                setName(checkIfAuthenticated.data.user);
-                setTotalHours(checkIfAuthenticated.data.total_hours);
-                setRemainingHours(checkIfAuthenticated.data.remaining_hours);
+                
+                
+                setName(`${response.data.first_name.toLocaleUpperCase()} ${response.data.last_name.toLocaleUpperCase()}`);
+                setTotalHours(response.data.total_hours);
+                setRemainingHours(response.data.remaining_hours);
 
             } catch (error) {
                 
