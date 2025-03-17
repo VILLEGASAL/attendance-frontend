@@ -1,0 +1,88 @@
+/* time-form.module.css */
+
+/* Form Container */
+.time-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2C2C2C;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+/* Input Group */
+.time-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Labels */
+.time-form label {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+/* Inputs */
+.time-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #444;
+    color: #FFF;
+}
+
+/* Disabled Input */
+.time-form input:disabled {
+    background-color: #555;
+    color: #bbb;
+    cursor: not-allowed;
+}
+
+/* Button */
+.time-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.time-form button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .time-form {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .time-form input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .time-form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Large Screens */
+@media screen and (min-width: 1024px) {
+    .time-form {
+        max-width: 700px;
+    }
+}

@@ -1,0 +1,129 @@
+/* login.module.css */
+
+/* Centering and styling the login container */
+.login_container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #222;
+    border-radius: 12px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Login Heading */
+.login_text {
+    color: #fff;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Label Styling */
+.username_label,
+.password_label {
+    display: block;
+    color: #bbb;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.username_input,
+.password_input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    transition: all 0.3s;
+}
+
+.username_input::placeholder,
+.password_input::placeholder {
+    color: #888;
+}
+
+/* Input focus effect */
+.username_input:focus,
+.password_input:focus {
+    border-color: #6A5ACD;
+    outline: none;
+}
+
+/* Button Styling */
+.login_btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #6A5ACD;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.login_btn:hover {
+    background-color: #4C3E9E;
+    transform: scale(1.05);
+}
+
+/* Signup Link */
+.link_to_signup {
+    display: block;
+    color: #6A5ACD;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.link_to_signup:hover {
+    text-decoration: underline;
+}
+
+/* Responsive for Smaller Screens */
+@media screen and (max-width: 480px) {
+    .login_container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .login_text {
+        font-size: 22px;
+    }
+
+    .username_input,
+    .password_input,
+    .login_btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Larger Screen Adjustments */
+@media screen and (min-width: 1024px) {
+    .login_container {
+        max-width: 450px;
+    }
+
+    .login_text {
+        font-size: 28px;
+    }
+
+    .username_input,
+    .password_input,
+    .login_btn {
+        font-size: 18px;
+        padding: 14px;
+    }
+}
