@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import styles from "../styles/login.module.css";
 import { useQuery } from "@tanstack/react-query";
 
-export const baseUrl = `https://attendance-backend-9ilt.onrender.com`;
+export const baseUrl = `https://attendance-backend-1-xwk9.onrender.com`;
 
 export const Login = () => {
 
