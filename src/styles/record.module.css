@@ -1,74 +1,59 @@
-/* attendance.module.css */
-
-/* Table Container */
-table {
+.tableContainer {
     width: 100%;
-    border-collapse: collapse;
-    background-color: #2C2C2C;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    overflow-x: auto; /* Enables horizontal scrolling on small screens */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-/* Table Header */
-thead {
-    background-color: #444;
+.table {
+    width: 90%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background: #f4f4f4; /* Light gray background for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    color: #333; /* Dark text for better readability */
+}
+
+/* Header Styles */
+.table thead {
+    background: #222; /* Darker background */
     color: white;
     font-weight: bold;
 }
 
-th {
-    padding: 15px;
-    text-align: left;
-    font-size: 16px;
-    border-bottom: 2px solid #555;
-}
-
-/* Table Body */
-tbody tr {
-    border-bottom: 1px solid #555;
-    transition: background-color 0.3s ease;
-}
-
-tbody tr:hover {
-    background-color: #3A3A3A;
-}
-
-td {
+.table th, .table td {
     padding: 12px;
-    color: #FFF;
-    font-size: 14px;
-}
-
-/* Loading Message */
-td[colspan="4"] {
     text-align: center;
-    font-style: italic;
-    color: #bbb;
+    border-bottom: 1px solid #ccc;
 }
 
-/* Responsive Table */
-@media screen and (max-width: 768px) {
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+/* Alternating Row Colors */
+.table tbody tr:nth-child(even) {
+    background: #e0e0e0; /* Light gray for alternating rows */
+}
 
-    th, td {
-        padding: 10px;
+.table tbody tr:nth-child(odd) {
+    background: #fff; /* White for contrast */
+}
+
+/* Responsive Text */
+@media (max-width: 600px) {
+    .table {
         font-size: 14px;
     }
-}
-
-/* Large Screen Adjustments */
-@media screen and (min-width: 1024px) {
-    th {
-        font-size: 18px;
-    }
-
-    td {
-        font-size: 16px;
-    }
-}
     
+    .table th, .table td {
+        padding: 8px;
+    }
+}
+
+/* Loading Text */
+.loadingText {
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    color: #444;
+}
