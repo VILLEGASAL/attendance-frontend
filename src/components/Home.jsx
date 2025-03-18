@@ -11,6 +11,7 @@ import { Records } from "./Records.jsx";
 
 
 import { baseUrl } from "./Login.jsx";
+import { Spinner } from "./Spinner.jsx";
 
 export const Home = () => {
 
@@ -18,7 +19,10 @@ export const Home = () => {
     const [name, setName] = useState("");
     const [totalHours, setTotalHours] = useState(0);
     const [remainingHours, setRemainingHours] = useState(0);
-    const [attendance, setAttendance] = useState('');
+    const [isLoadingToRender, setIsLoadingToRender] = useState(true);
+    const [attendance, setAttendance] = useState([]);
+
+
 
     const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["logoutUser"],
@@ -41,9 +45,10 @@ export const Home = () => {
                     window.location.href = "/login";
                 }
 
+                console.log(error.message);
+
                 return {}
                 
-                console.log(error.message);
             }
         }, 
         
@@ -67,15 +72,19 @@ export const Home = () => {
                     withCredentials: true
                 });
 
+                if(response.status === 200){
+
+                    setIsLoadingToRender(false);
+
+                    setName(`${response.data.first_name.toLocaleUpperCase()} ${response.data.last_name.toLocaleUpperCase()}`);
+                    setTotalHours(response.data.total_hours);
+                    setRemainingHours(response.data.remaining_hours);
+                }
                 
-                
-                
-                
-                setName(`${response.data.first_name.toLocaleUpperCase()} ${response.data.last_name.toLocaleUpperCase()}`);
-                setTotalHours(response.data.total_hours);
-                setRemainingHours(response.data.remaining_hours);
 
             } catch (error) {
+                
+                console.log(error.response);
                 
                 if (error.response.status === 401) {
                     
@@ -85,42 +94,55 @@ export const Home = () => {
         }
 
         checkAuth();
-    }, [attendance]);
+    }, []);
 
     useEffect(() => {
 
         const fetchAttendance = async () => {
 
-            const results = await axios.get(`${baseUrl}/attendance`, {
+            try {
 
-                withCredentials: true
-            });
+                const results = await axios.get(`${baseUrl}/attendance`, {
 
-            setAttendance(Array.isArray(results.data) ? results.data : [results.data]);
+                    withCredentials: true
+                });
+    
+                setAttendance(Array.isArray(results.data) ? results.data : [results.data]);
+                
+            } catch (error) {
+                
+                console.log(error.response);
+            }
         }
 
         fetchAttendance();
     }, []);
 
     return(
-        <div className={styles.home} >
-            <div className={styles.employee_details_container}>
-                <Employee name={name.toLocaleUpperCase()} total_hours={totalHours} remaining_hours={remainingHours} />
+        <>
+            {
+                isLoadingToRender ? <Spinner /> :
 
-                
-                <button onClick={handleLogoutBtn} disabled={isLoading}>
-                    {isLoading ? "Logging Out..." : "Log Out"}
-                </button>
-                
-            </div>
+                <div className={styles.home} >
+                    <div className={styles.employee_details_container}>
+                        <Employee name={name.toLocaleUpperCase()} total_hours={totalHours} remaining_hours={remainingHours} />
 
-            <div className={styles.form_container}>
-                <TimeForm />
-            </div>
+                        
+                        <button onClick={handleLogoutBtn} disabled={isLoading}>
+                            {isLoading ? "Logging Out..." : "Log Out"}
+                        </button>
+                        
+                    </div>
 
-            <div className={styles.employee_records_container}>
-                <Records attendance={attendance}/>
-            </div>
-        </div>
+                    <div className={styles.form_container}>
+                        <TimeForm />
+                    </div>
+
+                    <div className={styles.employee_records_container}>
+                        <Records attendance={attendance}/>
+                    </div>
+                </div>
+            }
+        </>
     );
 }

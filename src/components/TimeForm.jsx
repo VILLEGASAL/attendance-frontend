@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "./Spinner.jsx";
 
 import { baseUrl } from "./Login.jsx";
 
@@ -21,6 +22,7 @@ export const TimeForm = (props) => {
   const [timeIn, setTimeIN] = useState("");
   const [timeOut, setTimeOut] = useState("");
   const [date, setDate] = useState(formattedDate);
+  const [isLoadingToAddRecord, setIsLoadingToAddRecord] = useState(false);
   const navigate = useNavigate();
 
   const handleDateInput = (event) => {
@@ -42,16 +44,18 @@ export const TimeForm = (props) => {
 
     event.preventDefault();
 
+    setIsLoadingToAddRecord(true);
+
     try {
       const inTime = moment(timeIn, "HH:mm");
       const outTime = moment(timeOut, "HH:mm");
       const minTime = moment("08:00", "HH:mm"); // Set minimum allowed time (8:00 AM)
 
-      if(inTime.isBefore(minTime)){
+      // if(inTime.isBefore(minTime)){
 
-        alert("Time in must be 8 am onwards.");
+      //   alert("Time in must be 8 am onwards.");
         
-      }else{
+      // }else{
 
         if (outTime.isAfter(inTime)) {
 
@@ -80,17 +84,28 @@ export const TimeForm = (props) => {
               },
             }
           );
-  
+          
+          if(response.status === 200){
+
+            setIsLoadingToAddRecord(false);
+          }
+
           window.location.reload();
   
           console.log(response.status);
         }else{
-  
+          
+          setIsLoadingToAddRecord(false);
           alert("Time out must be greater than time in.");
         }
-      }
+      //}
 
     } catch (error) {
+
+      if(error.response.status != 200){
+
+        setIsLoadingToAddRecord(false);
+      }
         
       console.log(error);
     }
@@ -100,7 +115,7 @@ export const TimeForm = (props) => {
     <form onSubmit={handleSubmitAttendance} className={styles["time-form"]}>
       <div>
         <label htmlFor="currentDate">Current Date</label>
-        <input type="date" onChange={handleDateInput} value={date} id="currentDate" disabled />
+        <input type="date" onChange={handleDateInput} value={date} id="currentDate" />
       </div>
 
       <div>
@@ -118,9 +133,13 @@ export const TimeForm = (props) => {
       </div>
 
       <div>
-        <button className={styles.in} type="submit">
-          ADD RECORD
-        </button>
+        {
+          isLoadingToAddRecord ? <Spinner /> :
+
+          <button className={styles.in} type="submit">
+            ADD RECORD
+          </button>
+        }
       </div>
     </form>
   );
