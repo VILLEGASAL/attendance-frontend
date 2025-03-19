@@ -51,6 +51,9 @@ export const TimeForm = (props) => {
       const outTime = moment(timeOut, "HH:mm");
       const minTime = moment("08:00", "HH:mm"); // Set minimum allowed time (8:00 AM)
 
+      
+
+
       // if(inTime.isBefore(minTime)){
 
       //   alert("Time in must be 8 am onwards.");
@@ -87,6 +90,7 @@ export const TimeForm = (props) => {
           
           if(response.status === 200){
 
+            await props.fetchEmployeeData()
             setIsLoadingToAddRecord(false);
           }
 

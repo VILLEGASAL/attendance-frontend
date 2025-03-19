@@ -22,7 +22,22 @@ export const Home = () => {
     const [isLoadingToRender, setIsLoadingToRender] = useState(true);
     const [attendance, setAttendance] = useState([]);
 
+    const fetchData = async () => {
 
+        try {
+
+            const response = await axios.get(`${baseUrl}/auth/check-auth`, { withCredentials: true });
+
+            setName(`${response.data.first_name.toLocaleUpperCase()} ${response.data.last_name.toLocaleUpperCase()}`);
+            setTotalHours(response.data.total_hours);
+            setRemainingHours(response.data.remaining_hours);
+                
+
+        } catch (error) {
+
+            console.error("Error fetching employee data:", error);
+        }
+    }
 
     const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["logoutUser"],
@@ -94,7 +109,7 @@ export const Home = () => {
         }
 
         checkAuth();
-    }, []);
+    }, [attendance]);
 
     useEffect(() => {
 
@@ -125,9 +140,11 @@ export const Home = () => {
 
                 <div className={styles.home} >
                     <div className={styles.employee_details_container}>
-                        <Employee name={name.toLocaleUpperCase()} total_hours={totalHours} remaining_hours={remainingHours} />
+                        <Employee 
+                            name={name.toLocaleUpperCase()} 
+                            total_hours={totalHours} 
+                            remaining_hours={remainingHours} />
 
-                        
                         <button onClick={handleLogoutBtn} disabled={isLoading}>
                             {isLoading ? "Logging Out..." : "Log Out"}
                         </button>
@@ -135,7 +152,7 @@ export const Home = () => {
                     </div>
 
                     <div className={styles.form_container}>
-                        <TimeForm />
+                        <TimeForm fetchEmployeeData={fetchData}/>
                     </div>
 
                     <div className={styles.employee_records_container}>
