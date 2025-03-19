@@ -25,7 +25,7 @@ export const Records = (props) => {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="4" className={styles.loadingText}>Loading attendance...</td>
+                            <td colSpan="4" className={styles.loadingText}>No Attendance To Display</td>
                         </tr>
                     )}
                 </tbody>

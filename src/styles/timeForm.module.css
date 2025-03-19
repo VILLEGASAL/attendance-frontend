@@ -1,88 +1,94 @@
-/* time-form.module.css */
-
-/* Form Container */
+/* Base styles for the form */
 .time-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    background-color: #2C2C2C;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    margin: auto;
-}
-
-/* Input Group */
-.time-form div {
+    gap: 1.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #1A1A1D;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Styling for each form section */
+  .time-form > div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-/* Labels */
-.time-form label {
-    font-size: 16px;
-    color: #FFF;
-    font-weight: bold;
-}
-
-/* Inputs */
-.time-form input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #444;
-    color: #FFF;
-}
-
-/* Disabled Input */
-.time-form input:disabled {
-    background-color: #555;
-    color: #bbb;
-    cursor: not-allowed;
-}
-
-/* Button */
-.time-form button {
-    background-color: #4CAF50;
+    gap: 0.75rem;
+  }
+  
+  /* Adjust middle section with time inputs */
+  .time-form > div:nth-child(2) {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  /* Style for labels */
+  .time-form label {
+    font-weight: 500;
+    color: #e9ecef;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Style for all inputs */
+  .time-form input {
+    padding: 0.75rem;
+    border: 1px solid #495057;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #2c2525;
+    transition: border-color 0.2s ease;
+  }
+  
+  .time-form input:focus {
+    outline: none;
+    border-color: #9c74db;
+    box-shadow: 0 0 0 2px rgba(156, 116, 219, 0.2);
+  }
+  
+  /* Button styles */
+  .time-form button.in {
+    padding: 0.75rem 1rem;
+    background-color: #2A004E;
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.time-form button:hover {
-    background-color: #45a049;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
+    transition: background-color 0.2s ease;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  
+  .time-form button.in:hover {
+    background-color: #3b0069;
+  }
+  
+  .time-form button.in:active {
+    background-color: #490080;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
     .time-form {
-        padding: 15px;
-        width: 90%;
+      padding: 1.25rem;
+      gap: 1.25rem;
     }
-
-    .time-form input {
-        font-size: 14px;
-        padding: 8px;
+  }
+  
+  @media (max-width: 576px) {
+    /* Stack time inputs on small screens */
+    .time-form > div:nth-child(2) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
     }
-
-    .time-form button {
-        font-size: 14px;
-        padding: 8px;
-    }
-}
-
-/* Large Screens */
-@media screen and (min-width: 1024px) {
+    
     .time-form {
-        max-width: 700px;
+      padding: 1rem;
+      gap: 1rem;
     }
-}
+  }

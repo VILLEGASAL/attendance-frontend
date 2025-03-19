@@ -27,6 +27,13 @@
     background-color: var(--dark-bg);
     color: var(--text-color);
   }
+
+  .form_container{
+
+    display: grid;
+    place-content: center;
+    padding: 0;
+  }
   
   /* Common styles for all container cards */
   .employee_details_container,

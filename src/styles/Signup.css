@@ -55,7 +55,7 @@
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background: #8b5cf6;
+    background:  #6d28d9;
     border: none;
     border-radius: 5px;
     color: white;
@@ -64,7 +64,7 @@
   }
   
   .signup-btn:hover {
-    background: #6d28d9;
+    background: #8b5cf6;
   }
   
   /* Login link */

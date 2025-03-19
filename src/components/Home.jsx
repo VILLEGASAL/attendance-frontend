@@ -9,7 +9,6 @@ import { Employee } from "./Employee.jsx";
 import { TimeForm } from "./TimeForm.jsx";
 import { Records } from "./Records.jsx";
 
-
 import { baseUrl } from "./Login.jsx";
 import { Spinner } from "./Spinner.jsx";
 
@@ -18,7 +17,7 @@ export const Home = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [totalHours, setTotalHours] = useState(0);
-    const [remainingHours, setRemainingHours] = useState(0);
+    const [remainingHours, setRemainingHours] = useState(270);
     const [isLoadingToRender, setIsLoadingToRender] = useState(true);
     const [attendance, setAttendance] = useState([]);
 
@@ -31,7 +30,10 @@ export const Home = () => {
             setName(`${response.data.first_name.toLocaleUpperCase()} ${response.data.last_name.toLocaleUpperCase()}`);
             setTotalHours(response.data.total_hours);
             setRemainingHours(response.data.remaining_hours);
-                
+            
+            console.log(response.data);
+            
+            return response.data
 
         } catch (error) {
 
@@ -39,7 +41,22 @@ export const Home = () => {
         }
     }
 
+    const fetchAttendance = async () => {
+
+        try {
+
+            const results = await axios.get(`${baseUrl}/attendance`, { withCredentials: true });
+
+            setAttendance(Array.isArray(results.data) ? results.data : [results.data]);
+
+        } catch (error) {
+
+            console.error("Error fetching attendance data:", error);
+        }
+    };
+
     const { data, isLoading, error, refetch } = useQuery({
+        
         queryKey: ["logoutUser"],
 
         queryFn: async () => {
@@ -91,9 +108,9 @@ export const Home = () => {
 
                     setIsLoadingToRender(false);
 
-                    setName(`${response.data.first_name.toLocaleUpperCase()} ${response.data.last_name.toLocaleUpperCase()}`);
-                    setTotalHours(response.data.total_hours);
-                    setRemainingHours(response.data.remaining_hours);
+                    await fetchData();
+                    await fetchAttendance();
+                    
                 }
                 
 
@@ -109,28 +126,6 @@ export const Home = () => {
         }
 
         checkAuth();
-    }, [attendance]);
-
-    useEffect(() => {
-
-        const fetchAttendance = async () => {
-
-            try {
-
-                const results = await axios.get(`${baseUrl}/attendance`, {
-
-                    withCredentials: true
-                });
-    
-                setAttendance(Array.isArray(results.data) ? results.data : [results.data]);
-                
-            } catch (error) {
-                
-                console.log(error.response);
-            }
-        }
-
-        fetchAttendance();
     }, []);
 
     return(
@@ -152,7 +147,7 @@ export const Home = () => {
                     </div>
 
                     <div className={styles.form_container}>
-                        <TimeForm fetchEmployeeData={fetchData}/>
+                        <TimeForm fetchEmployeeData={fetchData} refreshAttendance={fetchAttendance}/>
                     </div>
 
                     <div className={styles.employee_records_container}>
