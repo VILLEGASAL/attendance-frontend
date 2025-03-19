@@ -17,7 +17,7 @@ export const Records = (props) => {
                     {props.attendance.length > 0 ? (
                         props.attendance.map((att) => (
                             <tr key={att.attendance_id}>
-                                <td>{new Date(att.attendance_date).toLocaleDateString("en-CA")}</td>
+                                <td>{att.attendance_date.split("T")[0]}</td>
                                 <td>{att.time_in}</td>
                                 <td>{att.time_out}</td>
                                 <td>{att.total_hours}</td>
