@@ -7,10 +7,7 @@ import styles from "../styles/login.module.css";
 import { Spinner } from "./Spinner.jsx";
 import { useQuery } from "@tanstack/react-query";
 
-export const baseUrl = `http://localhost:5000`
-
-
-//https://attendance-backend-1-qjc5.onrender.com
+export const baseUrl = `https://attendance-backend-1-qjc5.onrender.com`
 
 export const Login = () => {
 
