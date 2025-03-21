@@ -93,11 +93,8 @@ export const TimeForm = (props) => {
               await props.fetchEmployeeData();
 
               await props.refreshAttendance();
-
-             
             }
 
-    
             console.log(response.status);
           }else{
             

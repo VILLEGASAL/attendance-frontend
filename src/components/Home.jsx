@@ -31,8 +31,6 @@ export const Home = () => {
             setTotalHours(response.data.total_hours);
             setRemainingHours(response.data.remaining_hours);
             
-            console.log(response.data);
-            
             return response.data
 
         } catch (error) {
@@ -55,6 +53,24 @@ export const Home = () => {
         }
     };
 
+    const deleteAttendance = async (attendance_id) => {
+
+        try {
+            
+            const response = await axios.delete(`${baseUrl}/attendance/delete/${attendance_id}`, { withCredentials: true });
+
+            if (response.status === 200) {
+                
+                await fetchAttendance();
+                await fetchData();
+            }
+
+        } catch (error) {
+            
+            console.log(error.message);
+        }
+    }
+
     const { data, isLoading, error, refetch } = useQuery({
         
         queryKey: ["logoutUser"],
@@ -74,7 +90,7 @@ export const Home = () => {
                 
                 if (error.status != 200) {
                     
-                    window.location.href = "/login";
+                    navigate("/login");
                 }
 
                 console.log(error.message);
@@ -86,6 +102,10 @@ export const Home = () => {
         
         enabled: false,
     });
+
+
+
+    
 
     const handleLogoutBtn = async (event) => {
         
@@ -151,7 +171,7 @@ export const Home = () => {
                     </div>
 
                     <div className={styles.employee_records_container}>
-                        <Records attendance={attendance}/>
+                        <Records attendance={attendance} deleteAttendance={deleteAttendance} />
                     </div>
                 </div>
             }

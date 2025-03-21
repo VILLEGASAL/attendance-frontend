@@ -39,6 +39,27 @@
     background: #fff; /* White for contrast */
 }
 
+.deleteButton {
+    background-color: #e63946; /* Red color for delete */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.deleteButton:hover {
+    background-color: #c62828; /* Darker red on hover */
+}
+
+.deleteButton:disabled {
+    background-color: #b0b0b0; /* Greyed out when disabled */
+    cursor: not-allowed;
+}
+
+
 /* Responsive Text */
 @media (max-width: 600px) {
     .table {
