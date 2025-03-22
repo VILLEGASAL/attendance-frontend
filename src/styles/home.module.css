@@ -1,189 +1,93 @@
+/* Main Container */
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background-color: #1e1e2f; /* Dark theme */
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
 
-:root {
-    --primary-color: #3a86ff;
-    --secondary-color: #ff006e;
-    --dark-bg: #1a1a1a;
-    --medium-bg: #2d2d2d;
-    --light-bg: #3d3d3d;
-    --text-color: #ffffff;
-    --border-radius: 12px;
-    --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    --spacing-xs: 8px;
-    --spacing-sm: 12px;
-    --spacing-md: 20px;
-    --spacing-lg: 30px;
-    --transition: all 0.3s ease;
-  }
-  
-  /* Main container */
+/* Employee Details Container */
+.employee_details_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: #2c2c3e;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Employee Name & Hours */
+.employee_details_container h2 {
+  font-size: 22px;
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Log Out Button */
+.employee_details_container button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 150px;
+  margin-top: 10px;
+}
+
+.employee_details_container button:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+/* Disabled Log Out Button */
+.employee_details_container button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* Form Container */
+.form_container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Employee Records Container */
+.employee_records_container {
+  width: 100%;
+  max-width: 700px;
+  background: #2c2c3e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
   .home {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--spacing-md);
-    min-height: 100vh;
-    background-color: var(--dark-bg);
-    color: var(--text-color);
+      padding: 20px;
   }
 
-  .form_container{
-
-    display: grid;
-    place-content: center;
-    padding: 0;
-  }
-  
-  /* Common styles for all container cards */
   .employee_details_container,
   .form_container,
   .employee_records_container {
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: var(--spacing-md);
-    width: 100%;
-    transition: var(--transition);
-  }
-  
-  /* Employee details section */
-  .employee_details_container {
-    background-color: var(--medium-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
+      width: 100%;
   }
 
-  .logout_btn_container{
-
-    text-align: center;
-  }
-  
   .employee_details_container button {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius);
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: var(--transition);
-    width: 100%;
-    max-width: 200px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+      width: 100%;
+      padding: 14px;
   }
-  
-  .employee_details_container button:hover {
-    background-color: #d10058;
-    transform: translateY(-2px);
-  }
-  
-  .employee_details_container button:active {
-    transform: translateY(0);
-  }
-  
-  /* Form container */
-  .form_container {
-    background-color: var(--light-bg);
-  }
-  
-  /* Records container */
-  .employee_records_container {
-    background-color: var(--medium-bg);
-  }
-  
-  /* Small mobile screens */
-  @media screen and (max-width: 480px) {
-    .home {
-      padding: var(--spacing-sm);
-      gap: var(--spacing-sm);
-    }
-    
-    .employee_details_container,
-    .form_container,
-    .employee_records_container {
-      padding: var(--spacing-sm);
-    }
-    
-    .employee_details_container button {
-      font-size: 0.9rem;
-      padding: var(--spacing-xs) var(--spacing-sm);
-    }
-  }
-  
-  /* Medium-sized screens (tablets) */
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .home {
-      gap: var(--spacing-lg);
-      padding: var(--spacing-lg);
-    }
-    
-    .employee_details_container,
-    .form_container,
-    .employee_records_container {
-      padding: var(--spacing-lg);
-    }
-  }
-  
-  /* Large screens (desktops) */
-  @media screen and (min-width: 1024px) {
-    .home {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: var(--spacing-lg);
-      padding: var(--spacing-lg);
-    }
-    
-    .employee_details_container {
-      flex: 1;
-      min-width: 300px;
-      max-width: 400px;
-    }
-    
-    .form_container {
-      flex: 2;
-      min-width: 400px;
-    }
-    
-    .employee_records_container {
-      flex: 1 1 100%;
-    }
-  }
-  
-  /* Extra large screens */
-  @media screen and (min-width: 1440px) {
-    .home {
-      max-width: 1600px;
-    }
-    
-    .employee_details_container,
-    .form_container,
-    .employee_records_container {
-      padding: var(--spacing-lg);
-    }
-  }
-  
-  /* Print styles */
-  @media print {
-    .home {
-      display: block;
-      background-color: white;
-      color: black;
-    }
-    
-    .employee_details_container,
-    .form_container,
-    .employee_records_container {
-      box-shadow: none;
-      border: 1px solid #ddd;
-      margin-bottom: var(--spacing-md);
-      page-break-inside: avoid;
-    }
-    
-    .employee_details_container button {
-      display: none;
-    }
-  }
+}

@@ -1,80 +1,96 @@
+/* Container */
 .tableContainer {
     width: 100%;
-    overflow-x: auto; /* Enables horizontal scrolling on small screens */
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.table {
-    width: 90%;
-    max-width: 800px;
-    border-collapse: collapse;
-    background: #f4f4f4; /* Light gray background for contrast */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #1e1e2f; /* Dark theme */
     border-radius: 10px;
-    overflow: hidden;
-    color: #333; /* Dark text for better readability */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Header Styles */
-.table thead {
-    background: #222; /* Darker background */
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
     color: white;
-    font-weight: bold;
+    font-size: 16px;
 }
 
-.table th, .table td {
+/* Table Head */
+.table thead {
+    background-color: #333;
+    position: sticky;
+    top: 0;
+}
+
+.table th {
     padding: 12px;
+    text-align: left;
+    color: #ffcc00; /* Yellow for better visibility */
+    border-bottom: 2px solid #444;
     text-align: center;
-    border-bottom: 1px solid #ccc;
 }
 
-/* Alternating Row Colors */
+/* Table Rows */
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #444;
+    text-align: center;
+}
+
+/* Alternate Row Colors */
 .table tbody tr:nth-child(even) {
-    background: #e0e0e0; /* Light gray for alternating rows */
+    background-color: #2c2c3e;
 }
 
-.table tbody tr:nth-child(odd) {
-    background: #fff; /* White for contrast */
-}
-
+/* Delete Button */
 .deleteButton {
-    background-color: #e63946; /* Red color for delete */
+    background-color: #e63946; /* Red for delete */
     color: white;
     border: none;
     padding: 8px 12px;
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .deleteButton:hover {
-    background-color: #c62828; /* Darker red on hover */
+    background-color: #c62828;
+    transform: scale(1.05);
 }
 
 .deleteButton:disabled {
-    background-color: #b0b0b0; /* Greyed out when disabled */
+    background-color: #b0b0b0;
     cursor: not-allowed;
 }
 
+/* No Attendance Message */
+.loadingText {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+}
 
-/* Responsive Text */
-@media (max-width: 600px) {
+/* Responsive Table */
+@media screen and (max-width: 768px) {
+    .tableContainer {
+        padding: 5px;
+    }
+
     .table {
         font-size: 14px;
     }
-    
+
     .table th, .table td {
         padding: 8px;
     }
-}
 
-/* Loading Text */
-.loadingText {
-    text-align: center;
-    padding: 15px;
-    font-weight: bold;
-    color: #444;
+    .deleteButton {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
 }

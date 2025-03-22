@@ -1,94 +1,85 @@
-/* Base styles for the form */
+/* Form Container */
 .time-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1.5rem;
-    border-radius: 8px;
-    background-color: #1A1A1D;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #1e1e2f; /* Dark theme */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Form Groups */
+.time-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Labels */
+.time-form label {
+  font-size: 14px;
+  color: #ffcc00; /* Yellow for better visibility */
+  font-weight: bold;
+}
+
+/* Input Fields */
+.time-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #2c2c3e;
+  color: white;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.time-form input:focus {
+  border-color: #ffcc00;
+  box-shadow: 0 0 5px #ffcc00;
+}
+
+/* Button */
+.time-form .in {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.time-form .in:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Disabled Button (Loading) */
+.time-form .in:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media screen and (max-width: 500px) {
+  .time-form {
+      width: 90%;
+      padding: 15px;
   }
-  
-  /* Styling for each form section */
-  .time-form > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  
-  /* Adjust middle section with time inputs */
-  .time-form > div:nth-child(2) {
-    display: grid;
-    grid-template-columns: auto 1fr auto 1fr;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  
-  /* Style for labels */
-  .time-form label {
-    font-weight: 500;
-    color: #e9ecef;
-    margin-bottom: 0.25rem;
-  }
-  
-  /* Style for all inputs */
+
   .time-form input {
-    padding: 0.75rem;
-    border: 1px solid #495057;
-    border-radius: 4px;
-    font-size: 1rem;
-    color: #2c2525;
-    transition: border-color 0.2s ease;
+      font-size: 14px;
+      padding: 8px;
   }
-  
-  .time-form input:focus {
-    outline: none;
-    border-color: #9c74db;
-    box-shadow: 0 0 0 2px rgba(156, 116, 219, 0.2);
+
+  .time-form .in {
+      font-size: 14px;
+      padding: 10px;
   }
-  
-  /* Button styles */
-  .time-form button.in {
-    padding: 0.75rem 1rem;
-    background-color: #2A004E;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    width: 100%;
-    text-align: center;
-    letter-spacing: 0.5px;
-  }
-  
-  .time-form button.in:hover {
-    background-color: #3b0069;
-  }
-  
-  .time-form button.in:active {
-    background-color: #490080;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .time-form {
-      padding: 1.25rem;
-      gap: 1.25rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    /* Stack time inputs on small screens */
-    .time-form > div:nth-child(2) {
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto auto;
-    }
-    
-    .time-form {
-      padding: 1rem;
-      gap: 1rem;
-    }
-  }
+}

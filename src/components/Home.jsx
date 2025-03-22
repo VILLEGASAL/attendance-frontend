@@ -101,11 +101,7 @@ export const Home = () => {
         }, 
         
         enabled: false,
-    });
-
-
-
-    
+    });    
 
     const handleLogoutBtn = async (event) => {
         

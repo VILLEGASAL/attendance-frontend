@@ -1,51 +1,105 @@
-.employee_name_container{
-
-    display:flex;
-    flex-direction: column;
+/* Employee Name Container */
+.employee_name_container {
+    text-align: center;
+    padding: 20px 0;
 }
 
-.name{
-
-    font-size: 2rem;
+.name {
+    font-size: 32px;
+    color: #ffcc00;
     font-weight: bold;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 }
 
-.x{
-
-    margin-top: 2%;
+/* Main Container for Data */
+.x {
     display: flex;
     flex-direction: column;
-    justify-content: center ;
-    gap: 2rem;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-h1{
-
+/* Date, Total Hours, Remaining Hours Containers */
+.current_date_container {
+    background: #2c2c3e;
+    padding: 20px;
+    border-radius: 12px;
     text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
 }
 
-p{
-
-    text-align: center;
+/* Label Text */
+.date {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
-.data_container{
-
-    margin-top: 5%;
+/* Data Container */
+.data_container {
+    background: #1e1e2f;
+    padding: 12px;
+    border-radius: 10px;
 }
 
-.current_date_container{
-
-    text-align: left;
-}
-
-.date{
-
-    font-size: 1.2rem;
-    font-weight: normal;
+.data_container h1 {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
     margin: 0;
-    padding: 0;
+}
+
+/* Logout Button */
+.employee_details_container button {
+    width: 100%; /* Make it full width */
+    max-width: 400px; /* Prevent it from getting too large on big screens */
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.employee_details_container button:hover {
+    background: #ff3333;
+}
+
+.employee_details_container button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+/* Responsive Fix */
+@media screen and (max-width: 600px) {
+    .employee_details_container button {
+        max-width: 100%; /* Ensure it takes the full width on small screens */
+    }
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .x {
+        width: 90%;
+    }
+
+    .name {
+        font-size: 26px;
+    }
+
+    .current_date_container {
+        padding: 15px;
+    }
 }
